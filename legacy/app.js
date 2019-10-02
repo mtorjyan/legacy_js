@@ -6,7 +6,7 @@ const path = require('path');
 
 //Import routes
 
-const postRoute = require('../routes/posts')
+const postRoute = require('./routes/posts')
 app.use('/posts', postRoute);
 
 
