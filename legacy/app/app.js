@@ -9,6 +9,7 @@ const path = require('path');
 const postRoute = require('../routes/posts')
 app.use('/posts', postRoute);
 
+
 //Routes
 app.get('/', (req, res) => res.send('Hello World!'));
 
