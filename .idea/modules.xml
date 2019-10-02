@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/leg_js.iml" filepath="$PROJECT_DIR$/.idea/leg_js.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/legacy_js.iml" filepath="$PROJECT_DIR$/.idea/legacy_js.iml" />
+>>>>>>> 2decb837f96dad839844ba20f923e47ed8706bc3
     </modules>
   </component>
 </project>
