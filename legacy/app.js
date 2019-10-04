@@ -58,9 +58,23 @@ app.get('/login', function(req, res){
 // For login page
 app.get('/dashboard', function(req, res){ 
     // res.sendFile(__dirname + '/views/createAccount.html');
-    res.sendFile(__dirname + "/css/" + "custom.css");
-    res.sendFile(__dirname + "/css/" + "styles.css");
-    res.render('dashboard.ejs');
+    // res.sendFile(__dirname + "/css/" + "custom.css");
+    // res.sendFile(__dirname + "/css/" + "styles.css");
+    // students = {};
+    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
+        if(error) {
+            throw error;
+        }
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.collection.find().toArray(function(err, items) {
+            console.log(items);
+            res.render('dashboard.ejs', {students: items});
+        });
+        client.close();
+    });
+    
 });
 
 // app.post
