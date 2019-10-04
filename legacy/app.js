@@ -15,21 +15,69 @@ const DATABASE_NAME = "legacy";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static('public'));
+app.use(express.static('/views'));
+// app.set('view engine', 'html')
+
 //Import routes
 
-const postRoute = require('./routes/posts')
-app.use('/posts', postRoute);
+// const postRoute = require('./routes/posts')
+// app.use('/posts', postRoute);
+// const addRoute = require('./routes/add')
+// app.use('/add', addRoute)
 
 
 //Routes
-app.get('/', (req, res) =>{
-
-    // res.send('Hello World!')
-    res.sendFile(__dirname + "/index.html");
+app.get('/', function(req, res){ 
+    // res.sendFile(__dirname + '/views/index.html');
+    res.send('hello')
 });
 
+// app.post
+
+app.get('/get_student/:user_id', (req, res) => {  
+
+    console.log("HERE " + req.params.user_id)
+    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
+        if(error) {
+            throw error;
+        }
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.collection.find({firstName: req.params.user_id}).toArray(function(err, items) {
+            console.log(items);
+            res.send(items);
+        });
+        client.close();
+    });
+});
+
+
 app.post("/add_student", (request, response) => {
-    collection.insert(request.body, (error, result) => {
+    this.collection.insert(request.body, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
+    });
+});
+
+app.post("/add_instructor", (request, response) => {
+    to_add = request.body;
+
+    this.collection.insert(to_add, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
+    });
+});
+
+app.post("/login", (request, response) => {
+    to_add = request.body;
+
+    this.collection.insert(to_add, (error, result) => {
         if(error) {
             return response.status(500).send(error);
         }
@@ -43,9 +91,10 @@ app.listen(3000, () => {
         if(error) {
             throw error;
         }
-        database = client.db(DATABASE_NAME);
-        collection = database.collection("students");
         console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        client.close();
     });
 });
 
