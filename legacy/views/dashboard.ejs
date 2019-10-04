@@ -56,16 +56,6 @@
           <p class="lead"></p>
         </h1>
       </div>
-      <div class="col-md-5">
-        <div class="well well-lg"> 
-          <div class="row">
-            <div class="col-sm-12">
-              
-			
-            </div>
-          </div>
-        </div>
-      </div>
     </div> 
   </div><!-- /cont -->
   
@@ -91,73 +81,34 @@
           
           
           <!--/stories-->
-          <% for (var i = 0; i < students.length ; i++) { %>
-
+          <% for (var i = 0; i < students.length; i++) { %>
             <div class="row">    
               <br>
               <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/58.jpg" style="width:100px;height:100px" class="img-circle"></a>
+                <a class="story-title" href="#"><img alt="" src="<%= students[i].picture_url%>" style="width:100px;height:100px" class="img-circle"></a>
               </div>
               <div class="col-md-10 col-sm-9">
-                <h3><%= students[i].firstName %></h3>
+                <h3><%= students[i].firstName %> <%= students[i].lastname %></h3>
                 <div class="row">
                   <div class="col-xs-9">
-                    <h4><span class="label label-default">97thfloor.com</span></h4><h4>
-                    <small style="font-family:courier,'new courier';" class="text-muted">2 hours ago  • <a href="#" class="text-muted">Read More</a></small>
+                    <div style="font-family:courier,'new courier';" > Info: <%= students[i].info %> </div>
+                    <div style="font-family:courier,'new courier';" > Amount desired: <%= students[i].amount %></div>
+                    <div style="font-family:courier,'new courier';" > Contract: <%= students[i].contract %></div>
+                      <a href="#" class="text-muted"><br><br>Learn More</a>
                     </h4></div>
                   <div class="col-xs-3"></div>
                 </div>
                 <br><br>
               </div>
             </div>
-            <hr>
-
-          <% } %>                                                                  
+            <hr>             
+          <% } %>
+            
 	                                                
                                                       
    	</div><!--/col-12-->
   </div>
 </div>
-                                                
-                                                                                
-<hr>
-
-<div class="container" id="footer">
-  <div class="row">
-    <div class="col col-sm-12">
-      
-      <h1>Follow Us</h1>
-      <div class="btn-group">
-       <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-	   <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-	   <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-
-<hr>
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <ul class="list-inline">
-          <li><i class="icon-facebook icon-2x"></i></li>
-          <li><i class="icon-twitter icon-2x"></i></li>
-          <li><i class="icon-google-plus icon-2x"></i></li>
-          <li><i class="icon-pinterest icon-2x"></i></li>
-        </ul>
-        
-      </div>
-      <div class="col-sm-6">
-          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-      </div>
-    </div>
-  </div>
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
