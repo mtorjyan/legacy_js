@@ -11,7 +11,7 @@ h4 {
     font-size: 50px;
     line-height: 65px;
     text-align: center;
-    color: #000000;
+    color: #403F45;
 
 }
 
@@ -38,7 +38,7 @@ p{
     line-height: 20px;
     text-align: center;
 
-    color: #000000;
+    color: #403F45;
 
 }
 
@@ -50,7 +50,7 @@ a{
     line-height: 20px;
     text-align: center;
 
-    color: #000000;
+    color: #403F45;
 }
 
 .navbar{
@@ -58,18 +58,32 @@ a{
     height:100px;
     padding: 5px;
 }
+
 .btn-lg {
-    background-color: skyblue;
+    background-color: #E6CE1D;
     padding: 100px 180px;
     font-size: 50px;
     text-align: center;
-    color:  #000000;
+    color:  #403F45;
     border-radius: 10px;
     border-width: 0px;
 }
 
+.legacy{
+    background-color: #E6CE1D;
+    color:  #403F45;
+    
+}
+
+.legatus{
+    background-color: #403F45;
+    color:  #E6CE1D;
+    
+    
+}
+
 .btn-lg:hover{
-    background-color: paleturquoise;
+    background-color: #FDEC00;
     
 }
 
