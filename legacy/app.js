@@ -19,6 +19,8 @@ app.use(express.json());
 
 const postRoute = require('./routes/posts')
 app.use('/posts', postRoute);
+// const addRoute = require('./routes/add')
+// app.use('/add', addRoute)
 
 
 //Routes
@@ -28,12 +30,23 @@ app.get('/', (req, res) =>{
     res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/add_student", (request, response) => {
-    collection.insert(request.body, (error, result) => {
+// app.post
+
+app.get('/get_student/:user_id', (req, res) => {  
+
+    console.log("HERE " + req.params.user_id)
+    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
         if(error) {
-            return response.status(500).send(error);
+            throw error;
         }
-        response.send(result.result);
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.collection.find({firstName: req.params.user_id}).toArray(function(err, items) {
+            console.log(items);
+            res.send(items);
+        });
+        client.close();
     });
 });
 
@@ -43,9 +56,10 @@ app.listen(3000, () => {
         if(error) {
             throw error;
         }
-        database = client.db(DATABASE_NAME);
-        collection = database.collection("students");
         console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        client.close();
     });
 });
 

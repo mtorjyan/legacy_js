@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Student = require('../models/Student')
 const app = express();
+
+
 router.get('/' ,(req, res)=>{
     res.send('We are on posts');
 });
@@ -36,13 +38,8 @@ router.get('/' ,(req, res)=>{
    
 // });
 
-app.post("/posts", (request, response) => {
-    collection.insert(request.body, (error, result) => {
-        if(error) {
-            return response.status(500).send(error);
-        }
-        response.send(result.result);
-    });
+router.get('/hi' ,(req, res)=>{
+    res.send('hi');
 });
 
 
