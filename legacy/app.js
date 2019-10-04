@@ -69,7 +69,7 @@ app.get('/dashboard', function(req, res){
         this.database = client.db(DATABASE_NAME);
         this.collection = this.database.collection("students");
         console.log("Connected to `" + DATABASE_NAME + "`!");
-        this.collection.find({type: "1"}).toArray(function(err, items) {
+        this.collection.find({type: "0"}).toArray(function(err, items) {
             console.log(items);
             res.render('dashboard.ejs', {students: items});
         });
