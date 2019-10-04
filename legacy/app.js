@@ -6,6 +6,7 @@ const path = require('path');
 
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
+const url = require('url');
 
 const CONNECTION_URL = "mongodb+srv://mtorjyan:password1234@cluster0-aikvh.mongodb.net/admin?retryWrites=true&w=majority";
 const DATABASE_NAME = "legacy";
@@ -68,7 +69,7 @@ app.get('/dashboard', function(req, res){
         this.database = client.db(DATABASE_NAME);
         this.collection = this.database.collection("students");
         console.log("Connected to `" + DATABASE_NAME + "`!");
-        this.collection.find().toArray(function(err, items) {
+        this.collection.find({type: "1"}).toArray(function(err, items) {
             console.log(items);
             res.render('dashboard.ejs', {students: items});
         });
@@ -103,7 +104,12 @@ app.post("/add_student", (request, response) => {
         if(error) {
             return response.status(500).send(error);
         }
-        response.send(result.result);
+        // response.send(result.result);
+        response.redirect(url.format({
+            pathname:"/dashboard",
+            query: {
+             }
+          }));
 
     });
 });
