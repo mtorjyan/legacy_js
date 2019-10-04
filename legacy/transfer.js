@@ -55,6 +55,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(request, response, next) {
   response.render('index.ejs', {
+      
     PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
     PLAID_ENV: PLAID_ENV,
     PLAID_PRODUCTS: PLAID_PRODUCTS,
