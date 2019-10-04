@@ -6,6 +6,7 @@ const path = require('path');
 
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
+const url = require('url');
 
 const CONNECTION_URL = "mongodb+srv://mtorjyan:password1234@cluster0-aikvh.mongodb.net/admin?retryWrites=true&w=majority";
 const DATABASE_NAME = "legacy";
@@ -30,15 +31,22 @@ app.set('view engine', 'ejs')
 
 //Routes
 app.get('/', function(req, res){ 
-    // res.sendFile(__dirname + '/views/index.html');
-    res.send('hello')
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('index.ejs');
 });
 
 // For account creation page
-app.get('/create', function(req, res){ 
+app.get('/create_student', function(req, res){ 
     // res.sendFile(__dirname + '/views/createAccount.html');
     res.sendFile(__dirname + "/css/" + "main.css");
-    res.render('createAccount.ejs');
+    res.render('createStudentAccount.ejs');
+});
+
+// For account creation page
+app.get('/create_investor', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('createInvestorAccount.ejs');
 });
 
 // For login page
@@ -46,6 +54,28 @@ app.get('/login', function(req, res){
     // res.sendFile(__dirname + '/views/createAccount.html');
     res.sendFile(__dirname + "/css/" + "main.css");
     res.render('login.ejs');
+});
+
+// For login page
+app.get('/dashboard', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    // res.sendFile(__dirname + "/css/" + "custom.css");
+    // res.sendFile(__dirname + "/css/" + "styles.css");
+    // students = {};
+    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
+        if(error) {
+            throw error;
+        }
+        this.database = client.db(DATABASE_NAME);
+        this.collection = this.database.collection("students");
+        console.log("Connected to `" + DATABASE_NAME + "`!");
+        this.collection.find({type: "0"}).toArray(function(err, items) {
+            console.log(items);
+            res.render('dashboard.ejs', {students: items});
+        });
+        client.close();
+    });
+    
 });
 
 // app.post
@@ -74,7 +104,13 @@ app.post("/add_student", (request, response) => {
         if(error) {
             return response.status(500).send(error);
         }
-        response.send(result.result);
+        // response.send(result.result);
+        response.redirect(url.format({
+            pathname:"/dashboard",
+            query: {
+             }
+          }));
+
     });
 });
 
