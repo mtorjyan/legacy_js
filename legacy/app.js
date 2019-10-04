@@ -26,7 +26,7 @@ app.use('/posts', postRoute);
 
 //Routes
 app.get('/', function(req, res){ 
-    res.render('index',{user: "Justin",title:"HFJDHJKFKJSH"});
+    res.render('index',{firstName: "Justin",lastName:"HFJDHJKFKJSH"});
 });
 
 // app.post

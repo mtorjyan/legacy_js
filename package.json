@@ -21,6 +21,7 @@
   "homepage": "https://github.com/mtorjyan/legacy_js#readme",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
-    "@material-ui/icons": "^4.4.3"
+    "@material-ui/icons": "^4.4.3",
+    "ejs": "^2.7.1"
   }
 }
