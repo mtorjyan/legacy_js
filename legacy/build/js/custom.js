@@ -156,7 +156,8 @@ $(document).ready(function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
-        
+
+
         // fix for some div with hardcoded fix class
         if ($BOX_PANEL.attr('style')) {
             $BOX_CONTENT.slideToggle(200, function(){
@@ -164,10 +165,11 @@ $(document).ready(function() {
             });
         } else {
             $BOX_CONTENT.slideToggle(200); 
+            $BOX_CONTENT.css('display', 'block');
             $BOX_PANEL.css('height', 'auto');  
         }
 
-        $ICON.toggleClass('fa-chevron-up fa-chevron-down');
+        $ICON.toggleClass('fa-chevron-down fa-chevron-up');
     });
 
     $('.close-link').click(function () {
@@ -347,23 +349,23 @@ if (typeof NProgress != 'undefined') {
 		
 		
 		var arr_data1 = [
-			[gd(2012, 1, 1), 17],
-			[gd(2012, 1, 2), 74],
-			[gd(2012, 1, 3), 6],
-			[gd(2012, 1, 4), 39],
-			[gd(2012, 1, 5), 20],
-			[gd(2012, 1, 6), 85],
-			[gd(2012, 1, 7), 7]
+			[gd(2019, 9, 1), 17],
+			[gd(2019, 9, 2), 20],
+			[gd(2019, 9, 3), 30],
+			[gd(2019, 9, 4), 40],
+			[gd(2019, 9, 5), 65],
+			[gd(2019, 9, 6), 89],
+			[gd(2019, 9, 7), 102]
 		];
 
 		var arr_data2 = [
-		  [gd(2012, 1, 1), 82],
-		  [gd(2012, 1, 2), 23],
-		  [gd(2012, 1, 3), 66],
-		  [gd(2012, 1, 4), 9],
-		  [gd(2012, 1, 5), 119],
-		  [gd(2012, 1, 6), 6],
-		  [gd(2012, 1, 7), 9]
+			[gd(2019, 9, 1), 10],
+			[gd(2019, 9, 2), 30],
+			[gd(2019, 9, 3), 55],
+			[gd(2019, 9, 4), 59],
+			[gd(2019, 9, 5), 66],
+			[gd(2019, 9, 6), 90],
+			[gd(2019, 9, 7), 99]
 		];
 		
 		var arr_data3 = [
@@ -453,7 +455,7 @@ if (typeof NProgress != 'undefined') {
             axisLabelPadding: 10
           },
           yaxis: {
-            ticks: 8,
+            ticks: 10,
             tickColor: "rgba(51, 51, 51, 0.06)",
           },
           tooltip: false

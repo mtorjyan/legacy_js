@@ -26,7 +26,10 @@ app.use('/posts', postRoute);
 
 //Routes
 app.get('/', function(req, res){ 
-    res.render('index',{firstName: "Justin",lastName:"HFJDHJKFKJSH"});
+//    res.render('index',{firstName: "Justin",lastName:"HFJDHJKFKJSH"});
+    res.sendFile(__dirname + "../build/css/"+"custom.css");
+    res.sendFile(__dirname + "../vendors/bootstrap/dist/css/"+"bootstrap.min.css");
+    res.render('index.ejs');
 });
 
 // app.post
