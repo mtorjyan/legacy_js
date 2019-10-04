@@ -55,6 +55,14 @@ app.get('/login', function(req, res){
     res.render('login.ejs');
 });
 
+// For login page
+app.get('/dashboard', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "custom.css");
+    res.sendFile(__dirname + "/css/" + "styles.css");
+    res.render('dashboard.ejs');
+});
+
 // app.post
 
 app.get('/get_student/:user_id', (req, res) => {  
