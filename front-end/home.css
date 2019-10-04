@@ -1,0 +1,128 @@
+
+h3 {
+    color: orange;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 65px;
+    text-align: center;
+    color: #000000;
+
+}
+
+.x-left{
+    padding-left: 80px;
+}
+
+.x-right{
+    padding-right: 80px;
+}
+
+.vert-center{
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+p{
+    font-family: 'Ubuntu Mono', monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #000000;
+
+}
+
+a{
+    font-family: 'Ubuntu Mono', monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.navbar{
+    background-color: white;
+    height:100px;
+    padding: 5px;
+}
+.btn-lg {
+    background-color: skyblue;
+    padding: 100px 180px;
+    font-size: 50px;
+    text-align: center;
+    color:  #000000;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+.btn-lg:hover{
+    background-color: paleturquoise;
+    
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+
+.overlay {
+  position: absolute;
+
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  background:none !important;
+}
+
+.closex{
+    float: right;
+    opacity: 100%;
+    text-align: right;
+    font-size: 60px;
+    color: grey;
+}
+
+ .logo-image{
+    width: 400px;
+    height: 200px;
+    border-radius: 5%;
+    padding-left: 80px;
+    padding-top: 60px;
+    overflow: hidden;
+    margin-top: -6px;
+}
+
