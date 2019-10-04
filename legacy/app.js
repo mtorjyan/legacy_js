@@ -15,9 +15,10 @@ const DATABASE_NAME = "legacy";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static('public'));
+app.use(express.static('/css'));
 app.use(express.static('/views'));
-// app.set('view engine', 'html')
+app.use(express.static("public"));
+app.set('view engine', 'ejs')
 
 //Import routes
 
@@ -33,11 +34,23 @@ app.get('/', function(req, res){
     res.send('hello')
 });
 
+// For account creation page
+app.get('/create', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('createAccount.ejs');
+});
+
+// For login page
+app.get('/login', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('login.ejs');
+});
+
 // app.post
 
 app.get('/get_student/:user_id', (req, res) => {  
-
-    console.log("HERE " + req.params.user_id)
     MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
         if(error) {
             throw error;
@@ -55,7 +68,9 @@ app.get('/get_student/:user_id', (req, res) => {
 
 
 app.post("/add_student", (request, response) => {
-    this.collection.insert(request.body, (error, result) => {
+    to_add = request.body;
+    to_add["type"] = "0";
+    this.collection.insertOne(request.body, (error, result) => {
         if(error) {
             return response.status(500).send(error);
         }
@@ -65,7 +80,7 @@ app.post("/add_student", (request, response) => {
 
 app.post("/add_instructor", (request, response) => {
     to_add = request.body;
-
+    to_add["type"] = "1";
     this.collection.insert(to_add, (error, result) => {
         if(error) {
             return response.status(500).send(error);
@@ -76,7 +91,6 @@ app.post("/add_instructor", (request, response) => {
 
 app.post("/login", (request, response) => {
     to_add = request.body;
-
     this.collection.insert(to_add, (error, result) => {
         if(error) {
             return response.status(500).send(error);
@@ -94,7 +108,6 @@ app.listen(3000, () => {
         console.log("Connected to `" + DATABASE_NAME + "`!");
         this.database = client.db(DATABASE_NAME);
         this.collection = this.database.collection("students");
-        client.close();
     });
 });
 
