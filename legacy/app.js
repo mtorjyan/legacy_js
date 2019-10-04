@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const path = require('path');
-
+const bodyParser = require('body-parser');
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 const url = require('url');
@@ -56,6 +56,12 @@ app.get('/login', function(req, res){
     res.render('login.ejs');
 });
 
+app.get('/transferme', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('front.ejs');
+});
+
 // For login page
 app.get('/dashboard', function(req, res){ 
     // res.sendFile(__dirname + '/views/createAccount.html');
@@ -88,9 +94,9 @@ app.get('/get_student/:user_id', (req, res) => {
         this.database = client.db(DATABASE_NAME);
         this.collection = this.database.collection("students");
         console.log("Connected to `" + DATABASE_NAME + "`!");
-        this.collection.find({firstName: req.params.user_id}).toArray(function(err, items) {
-            console.log(items);
-            res.send(items);
+        this.collection.find({firstName: req.params.user_id}).toArray(function(err, item) {
+            console.log(item);
+            res.render('profile_view.ejs', {students: item});
         });
         client.close();
     });
@@ -114,14 +120,19 @@ app.post("/add_student", (request, response) => {
     });
 });
 
-app.post("/add_instructor", (request, response) => {
+app.post("/add_investor", (request, response) => {
     to_add = request.body;
     to_add["type"] = "1";
+    console.log(to_add);
     this.collection.insert(to_add, (error, result) => {
         if(error) {
             return response.status(500).send(error);
         }
-        response.send(result.result);
+        response.redirect(url.format({
+            pathname:"/dashboard",
+            query: {
+             }
+          }));
     });
 });
 
@@ -146,4 +157,5 @@ app.listen(3000, () => {
         this.collection = this.database.collection("students");
     });
 });
+
 
