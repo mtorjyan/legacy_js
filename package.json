@@ -1,0 +1,26 @@
+{
+  "name": "legacy",
+  "version": "1.0.0",
+  "description": "HUman equity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtorjyan/legacy_js.git"
+  },
+  "keywords": [
+    "techcrunch"
+  ],
+  "author": "Alexis Wei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtorjyan/legacy_js/issues"
+  },
+  "homepage": "https://github.com/mtorjyan/legacy_js#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3"
+  }
+}
