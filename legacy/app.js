@@ -14,19 +14,23 @@ const DATABASE_NAME = "legacy";
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.set('view engine', 'ejs')
+
+app.use(express.static('public'));
+app.use(express.static('/views'));
+// app.set('view engine', 'html')
 
 //Import routes
 
-const postRoute = require('./routes/posts')
-app.use('/posts', postRoute);
+// const postRoute = require('./routes/posts')
+// app.use('/posts', postRoute);
 // const addRoute = require('./routes/add')
 // app.use('/add', addRoute)
 
 
 //Routes
 app.get('/', function(req, res){ 
-    res.render('index',{firstName: "Justin",lastName:"HFJDHJKFKJSH"});
+    // res.sendFile(__dirname + '/views/index.html');
+    res.send('hello')
 });
 
 // app.post
