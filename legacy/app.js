@@ -14,6 +14,7 @@ const DATABASE_NAME = "legacy";
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set('view engine', 'ejs')
 
 //Import routes
 
@@ -24,10 +25,8 @@ app.use('/posts', postRoute);
 
 
 //Routes
-app.get('/', (req, res) =>{
-
-    // res.send('Hello World!')
-    res.sendFile(__dirname + "/index.html");
+app.get('/', function(req, res){ 
+    res.render('index',{user: "Justin",title:"HFJDHJKFKJSH"});
 });
 
 // app.post
@@ -47,6 +46,38 @@ app.get('/get_student/:user_id', (req, res) => {
             res.send(items);
         });
         client.close();
+    });
+});
+
+
+app.post("/add_student", (request, response) => {
+    this.collection.insert(request.body, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
+    });
+});
+
+app.post("/add_instructor", (request, response) => {
+    to_add = request.body;
+
+    this.collection.insert(to_add, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
+    });
+});
+
+app.post("/login", (request, response) => {
+    to_add = request.body;
+
+    this.collection.insert(to_add, (error, result) => {
+        if(error) {
+            return response.status(500).send(error);
+        }
+        response.send(result.result);
     });
 });
 
