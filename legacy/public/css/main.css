@@ -111,7 +111,13 @@ label {
 }
 
 /*---------------------------------------------*/
-button {
+#button1 , #button2 {
+  display:inline-block;
+  /**other codes**/
+}
+a {
+  margin-bottom: 25px;
+  margin-right: 5px;
 	outline: none !important;
 	border: none;
 	background: transparent;

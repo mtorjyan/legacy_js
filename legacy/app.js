@@ -30,15 +30,22 @@ app.set('view engine', 'ejs')
 
 //Routes
 app.get('/', function(req, res){ 
-    // res.sendFile(__dirname + '/views/index.html');
-    res.send('hello')
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('index.ejs');
 });
 
 // For account creation page
-app.get('/create', function(req, res){ 
+app.get('/create_student', function(req, res){ 
     // res.sendFile(__dirname + '/views/createAccount.html');
     res.sendFile(__dirname + "/css/" + "main.css");
-    res.render('createAccount.ejs');
+    res.render('createStudentAccount.ejs');
+});
+
+// For account creation page
+app.get('/create_investor', function(req, res){ 
+    // res.sendFile(__dirname + '/views/createAccount.html');
+    res.sendFile(__dirname + "/css/" + "main.css");
+    res.render('createInvestorAccount.ejs');
 });
 
 // For login page
